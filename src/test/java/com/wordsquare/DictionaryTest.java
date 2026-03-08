@@ -1,16 +1,26 @@
-package com.wordsquare;                        
+package com.wordsquare;
 
-import org.junit.jupiter.api.Test;              
-import static org.junit.jupiter.api.Assertions.*; 
+import static org.junit.jupiter.api.Assertions.assertFalse; 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
-class DictionaryTest {                         
+class DictionaryTest {
 
-    @Test                                    
-    void shouldReturnTrueForValidWord() {      
-        Dictionary dictionary = new Dictionary(); 
+    @Test
+    void shouldReturnTrueForValidWord() {
+        Dictionary dictionary = new Dictionary();
 
         boolean result = dictionary.contains("rose");
 
-        assertTrue(result);                   
+        assertTrue(result);
+    }
+
+    @Test
+    void shouldReturnFalseForInvalidWord() {
+        Dictionary dictionary = new Dictionary();
+
+        boolean result = dictionary.contains("wxyz");
+
+        assertFalse(result);
     }
 }
