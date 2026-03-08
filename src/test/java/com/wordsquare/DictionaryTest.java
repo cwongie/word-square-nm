@@ -1,10 +1,9 @@
 package com.wordsquare;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 class DictionaryTest {
@@ -37,6 +36,6 @@ class DictionaryTest {
         assertTrue(result.contains("rose"));
         assertTrue(result.contains("oven"));
         assertTrue(result.contains("send"));
-        assertTrue(result.contains("Ends"));
+        assertTrue(result.contains("ends"));
     }
 }
