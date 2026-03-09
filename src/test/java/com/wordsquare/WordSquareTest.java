@@ -1,8 +1,9 @@
 package com.wordsquare;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import java.util.List;
 
 class WordSquareTest {
 
@@ -33,7 +34,6 @@ class WordSquareTest {
 
         wordSquare.addWord("rose");
 
-        // After placing "rose", column prefixes should be r, o, s, e
         assertEquals("r", wordSquare.getColumnPrefix(0));
         assertEquals("o", wordSquare.getColumnPrefix(1));
         assertEquals("s", wordSquare.getColumnPrefix(2));

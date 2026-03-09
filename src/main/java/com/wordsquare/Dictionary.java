@@ -45,7 +45,7 @@ public class Dictionary {
     }
 
     public boolean canMakeWord(String word, List<Character> letters) {
-        List<Character> remainingLetters = new ArrayList<>(letters); // makes copy of original list to preserve for next word to be checked
+        List<Character> remainingLetters = new ArrayList<>(letters); // copy of original list to preserve for next word to be checked
         for (char c : word.toCharArray()) {
             if (!remainingLetters.remove(Character.valueOf(c))) {
                 return false;
