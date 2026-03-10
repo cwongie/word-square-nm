@@ -34,7 +34,7 @@ mvn clean package
 
 ### Run
 ```
-java -jar target/word-square-1.0-SNAPSHOT.jar "4 eeeeddoonnnsssrv"
+java -jar target/word-square.jar "4 eeeeddoonnnsssrv"
 ```
 
 ### Run Tests
