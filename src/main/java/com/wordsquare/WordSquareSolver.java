@@ -12,14 +12,15 @@ public class WordSquareSolver {
     }
 
     public WordSquare solve(int size, List<Character> letters) {
+        List<String> candidates = dictionary.getWordsOfLength(size, letters);
         WordSquare wordSquare = new WordSquare(size);
-        if (search(wordSquare, size, letters)) {
+        if (search(wordSquare, size, candidates)) {
             return wordSquare;
         }
         return null;
     }
 
-    private boolean search(WordSquare wordSquare, int size, List<Character> letters) {
+    private boolean search(WordSquare wordSquare, int size, List<String> candidates) {
         if (wordSquare.isComplete()) {
             return true;
         }
@@ -27,17 +28,15 @@ public class WordSquareSolver {
         int currentRow = wordSquare.getWordCount();
         String prefix = wordSquare.getColumnPrefix(currentRow);
 
-        List<String> candidates = dictionary.getWordsOfLength(size, letters)
-                .stream()
+        List<String> filteredCandidates = candidates.stream()
                 .filter(word -> word.startsWith(prefix))
                 .collect(Collectors.toList());
 
-        for (String candidate : candidates) {
+        for (String candidate : filteredCandidates) {
             wordSquare.addWord(candidate);
-            List<Character> remainingLetters = getRemainingLetters(letters, candidate);
 
-            if (columnsStillViable(wordSquare, size, remainingLetters)) {
-                if (search(wordSquare, size, remainingLetters)) {
+            if (columnsStillViable(wordSquare, size, candidates)) {
+                if (search(wordSquare, size, candidates)) {
                     return true;
                 }
             }
@@ -47,25 +46,16 @@ public class WordSquareSolver {
         return false;
     }
 
-    private boolean columnsStillViable(WordSquare wordSquare, int size, List<Character> remainingLetters) {
+    private boolean columnsStillViable(WordSquare wordSquare, int size, List<String> candidates) {
         int currentRow = wordSquare.getWordCount();
-        for (int col = 0; col < size; col++) {
+        for (int col = currentRow; col < size; col++) {
             String prefix = wordSquare.getColumnPrefix(col);
-            boolean anyMatch = dictionary.getWordsOfLength(size, remainingLetters)
-                    .stream()
+            boolean anyMatch = candidates.stream()
                     .anyMatch(word -> word.startsWith(prefix));
-            if (col >= currentRow && !anyMatch) {
+            if (!anyMatch) {
                 return false;
             }
         }
         return true;
-    }
-
-    private List<Character> getRemainingLetters(List<Character> letters, String usedWord) {
-        List<Character> remaining = new java.util.ArrayList<>(letters);
-        for (char c : usedWord.toCharArray()) {
-            remaining.remove(Character.valueOf(c));
-        }
-        return remaining;
     }
 }
