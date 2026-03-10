@@ -36,4 +36,14 @@ public class WordSquare {
     public List<String> getWords() {
         return words;
     }
+
+    public int getWordCount() {
+        return words.size();
+    }
+
+    public void removeLastWord() {
+        if (!words.isEmpty()) {
+            words.remove(words.size() - 1);
+        }
+    }
 }
