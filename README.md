@@ -112,7 +112,7 @@ The solution is broken into four classes, each with a single responsibility:
     ```
     This immediately constrains 4 positions before any search begins.
 
-    ## Potential optimisation
+## Potential optimisation
     A more efficient solver could:
     1. Count how many times each letter appears in the input. Any letter appearing an odd number of times must be a diagonal letter
     2. Place the first word using a diagonal letter at position [0][0]
@@ -123,6 +123,6 @@ The solution is broken into four classes, each with a single responsibility:
     This would reduce the search space significantly compared to the current 
     row-by-row approach, particularly for larger grids like the 7x7 challenge input.
 
-    ## Dictionary Source
+## Dictionary Source
     [enable1.txt](http://norvig.com/ngrams/enable1.txt) — a list of 172,820 
     valid English words.
