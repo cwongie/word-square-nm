@@ -87,9 +87,17 @@ class WordSquareSolverTest {
                 'm', 'm',
                 'n', 'n', 'n',
                 'o', 'o');
-
+        String candidate = "came";
+        List<Character> expectedRemainingLetters = List.of(
+                'a',
+                'c',
+                'd',
+                'e', 'e', 'e',
+                'm',
+                'n', 'n', 'n',
+                'o', 'o');
         WordSquareSolver solver = new WordSquareSolver(dictionary);
-        boolean result = solver.removesLetters(4, letters);
-        assertTrue(result);
+        List<Character> result = solver.removesLetters(candidate, letters);
+        assertTrue(result.equals(expectedRemainingLetters));
     }
 }
