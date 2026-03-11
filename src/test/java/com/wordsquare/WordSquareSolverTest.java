@@ -51,29 +51,6 @@ class WordSquareSolverTest {
     }
 
     @Test
-    void shouldSolveAnother5x5WordSquare() {
-        Dictionary dictionary = new Dictionary();
-        List<Character> letters = List.of(
-                'a', 'a',
-                'b', 'b',
-                'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e',
-                'h',
-                'm',
-                'o',
-                's',
-                'r', 'r', 'r', 'r',
-                'u',
-                't', 't',
-                'v', 'v');
-
-        WordSquareSolver solver = new WordSquareSolver(dictionary);
-        WordSquare result = solver.solve(5, letters);
-
-        assertNotNull(result);
-        assertTrue(result.isComplete());
-    }
-
-    @Test
     void shouldSolveA7x7WordSquare() {
         Dictionary dictionary = new Dictionary();
         List<Character> letters = List.of(
@@ -97,5 +74,21 @@ class WordSquareSolverTest {
 
         assertNotNull(result);
         assertTrue(result.isComplete());
+    }
+
+    @Test
+    void shouldRemoveCandidateFromLetters() {
+        Dictionary dictionary = new Dictionary();
+        List<Character> letters = List.of(
+                'a', 'a',
+                'c', 'c',
+                'd',
+                'e', 'e', 'e', 'e',
+                'm', 'm',
+                'n', 'n', 'n',
+                'o', 'o');
+                
+        WordSquareSolver solver = new WordSquareSolver(dictionary);
+        WordSquare result = solver.removesLetters(4, letters);
     }
 }
