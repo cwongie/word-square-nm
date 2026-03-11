@@ -58,4 +58,8 @@ public class WordSquareSolver {
         }
         return true;
     }
+    
+    public boolean removesLetters(int size, List<Character> letters){
+        return true;
+    }
 }

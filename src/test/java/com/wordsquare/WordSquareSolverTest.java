@@ -87,8 +87,9 @@ class WordSquareSolverTest {
                 'm', 'm',
                 'n', 'n', 'n',
                 'o', 'o');
-                
+
         WordSquareSolver solver = new WordSquareSolver(dictionary);
-        WordSquare result = solver.removesLetters(4, letters);
+        boolean result = solver.removesLetters(4, letters);
+        assertTrue(result);
     }
 }
