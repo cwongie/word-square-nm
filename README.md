@@ -72,11 +72,12 @@ The solution is broken into four classes, each with a single responsibility:
     1. Find all valid words of the required length from the available letters
     2. Filter to only words that start with the correct column prefix
     3. Place a candidate word in the current row
-    4. Check every remaining incomplete column. Does the dictionary have ANY word that starts with the letters this column has built up so far? 
+    4. Remove the characters of the candidate we are checking from the remaining letter list
+    5. Check every remaining incomplete column. Does the dictionary have ANY word that starts with the letters this column has built up so far AND is buildable from those remaining letters? 
     — if a column has no possible valid words, this path is a dead end
-    5. If valid — move to the next row and repeat
-    6. If not valid — remove the word just placed and try the next candidate instead (this is the backtracking step)
-    7. If all candidates fail for a row — go back to the previous row and try a different word there too
+    6. If valid — move to the next row and repeat using the pruned remaining letters
+    7. If not valid — remove the word just placed and try the next candidate instead and do not apply the letter removal (this is the backtracking step)
+    8. If all candidates fail for a row — go back to the previous row and try a different word there too
 
     This means the solver avoids wasting time exploring paths that are already impossible, which makes it efficient for even larger grids
 
