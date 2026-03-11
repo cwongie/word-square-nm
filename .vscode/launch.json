@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "com.wordsquare.App",
+            "projectName": "word-square",
+            "args": "\"4 aaccdeeeemmnnnoo\""
+        }
+    ]
+}
